@@ -90,7 +90,8 @@ class Jupyter_plotter:
     from matplotlib import pyplot as plt
 
     plot_dir = self.plot_dir
-    name = self.name
+    name = self.domain.get_name()
+    time = self.domain.get_time() 
     
     if plot_dir is None:
         expression = name+'_*.png'
