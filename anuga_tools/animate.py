@@ -66,7 +66,7 @@ class Jupyter_plotter:
     if plot_dir is None:
         plt.savefig(name+'_{0:0>4}.png'.format(int(time)))
     else:
-        plot.savefig(os.path.join(plot_dir, name+'_{0:0>4}.png'.format(int(time))))
+        plt.savefig(os.path.join(plot_dir, name+'_{0:0>4}.png'.format(int(time))))
     plt.close()
     
     return    
