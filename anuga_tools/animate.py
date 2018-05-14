@@ -83,7 +83,7 @@ class Jupyter_plotter:
     
     return
 
-  def make_depth_animation(domain):
+  def make_depth_animation(self):
     import numpy as np
     import glob
     from matplotlib import image, animation
