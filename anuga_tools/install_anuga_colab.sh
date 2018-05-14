@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 cd /content
 
 echo "(1) Install netcdf nose via pip"
