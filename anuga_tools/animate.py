@@ -12,7 +12,10 @@ class Jupyter_plotter:
   xmomentunm and ymomentum, and triangulation information.
   """
   
-  def __init__(self, domain):
+  def __init__(self, domain, plot_dir = None):
+    
+    self.plot_dir = plot_dir
+    self.make_plot_dir()
     
     import matplotlib.tri as tri
     self.nodes = domain.nodes
@@ -27,8 +30,8 @@ class Jupyter_plotter:
     self.ymom  = domain.quantities['ymomentum'].centroid_values
     self.domain = domain
     
-  def _make_depth_vis(self, figsize, dpi):
-  
+  def _depth_frame(self, figsize, dpi):
+ 
     name = self.domain.get_name()
     time = self.domain.get_time() 
 
@@ -50,26 +53,30 @@ class Jupyter_plotter:
     
     return    
     
-  def make_depth_png(self):
+  def save_depth_frame(self):
 
     figsize=(10,6)
     dpi = 80
+    plot_dir = self.plot_dir
     name = self.domain.get_name()
     time = self.domain.get_time()
 
-    self._make_depth_vis(figsize,dpi);
+    self._depth_visualisation(figsize,dpi);
     
-    plt.savefig(name+'_{0:0>4}.png'.format(int(time)))
+    if plot_dir is None:
+        plt.savefig(name+'_{0:0>4}.png'.format(int(time)))
+    else:
+        plot.savefig(os.path.join(plot_dir, name+'_{0:0>4}.png'.format(int(time))))
     plt.close()
     
     return    
 
-  def make_depth_plot(self):
+  def plot_depth_frame(self):
   
     figsize=(5,3)
     dpi = 80
     
-    self._make_depth_vis(figsize,dpi)
+    self._depth_frame(figsize,dpi)
     
     plt.show()
     
@@ -106,3 +113,26 @@ class Jupyter_plotter:
     plt.close()
   
     return anim
+
+    def make_plotdir(self, clobber=True):
+        """
+        Utility function to create a directory for storing a sequence of plot
+        files, or if the directory already exists, clear out any old plots.  
+        If clobber==False then it will abort instead of deleting existing files.
+        """
+
+        plot_dir = self.plot_dir
+        if plot_dir is None:
+            return
+        else:
+            import os
+            if os.path.isdir(plotdir):
+                if clobber:
+                    os.system("rm %s/*" % plotdir)
+                else:
+                    raise IOError('*** Cannot clobber existing directory %s' % plotdir)
+            else:
+                os.system("mkdir %s" % plotdir)
+            print("Figure files for each frame will be stored in ", plotdir)
+        
+        
