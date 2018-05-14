@@ -126,13 +126,13 @@ class Jupyter_plotter:
       return
     else:
       import os
-      if os.path.isdir(plotdir):
+      if os.path.isdir(plot_dir):
           if clobber:
-              os.system("rm %s/*" % plotdir)
+              os.system("rm %s/*" % plot_dir)
           else:
-              raise IOError('*** Cannot clobber existing directory %s' % plotdir)
+              raise IOError('*** Cannot clobber existing directory %s' % plot_dir)
       else:
-          os.system("mkdir %s" % plotdir)
-      print("Figure files for each frame will be stored in ", plotdir)
+          os.system("mkdir %s" % plot_dir)
+      print("Figure files for each frame will be stored in ", plot_dir)
 
 
