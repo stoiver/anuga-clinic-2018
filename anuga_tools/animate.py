@@ -114,25 +114,25 @@ class Jupyter_plotter:
   
     return anim
 
-    def make_plot_dir(self, clobber=True):
-        """
-        Utility function to create a directory for storing a sequence of plot
-        files, or if the directory already exists, clear out any old plots.  
-        If clobber==False then it will abort instead of deleting existing files.
-        """
+  def make_plot_dir(self, clobber=True):
+    """
+    Utility function to create a directory for storing a sequence of plot
+    files, or if the directory already exists, clear out any old plots.  
+    If clobber==False then it will abort instead of deleting existing files.
+    """
 
-        plot_dir = self.plot_dir
-        if plot_dir is None:
-            return
-        else:
-            import os
-            if os.path.isdir(plotdir):
-                if clobber:
-                    os.system("rm %s/*" % plotdir)
-                else:
-                    raise IOError('*** Cannot clobber existing directory %s' % plotdir)
-            else:
-                os.system("mkdir %s" % plotdir)
-            print("Figure files for each frame will be stored in ", plotdir)
-        
-        
+    plot_dir = self.plot_dir
+    if plot_dir is None:
+      return
+    else:
+      import os
+      if os.path.isdir(plotdir):
+          if clobber:
+              os.system("rm %s/*" % plotdir)
+          else:
+              raise IOError('*** Cannot clobber existing directory %s' % plotdir)
+      else:
+          os.system("mkdir %s" % plotdir)
+      print("Figure files for each frame will be stored in ", plotdir)
+
+
