@@ -12,7 +12,7 @@ class Jupyter_plotter:
   xmomentunm and ymomentum, and triangulation information.
   """
   
-  def __init__(self, domain, plot_dir = None):
+  def __init__(self, domain, plot_dir = '_plot'):
     
     self.plot_dir = plot_dir
     self.make_plot_dir()
@@ -114,7 +114,7 @@ class Jupyter_plotter:
   
     return anim
 
-    def make_plotdir(self, clobber=True):
+    def make_plot_dir(self, clobber=True):
         """
         Utility function to create a directory for storing a sequence of plot
         files, or if the directory already exists, clear out any old plots.  
