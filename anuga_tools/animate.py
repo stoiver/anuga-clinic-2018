@@ -61,7 +61,7 @@ class Jupyter_plotter:
     name = self.domain.get_name()
     time = self.domain.get_time()
 
-    self._depth_visualisation(figsize,dpi);
+    self._depth_frame(figsize,dpi);
     
     if plot_dir is None:
         plt.savefig(name+'_{0:0>4}.png'.format(int(time)))
