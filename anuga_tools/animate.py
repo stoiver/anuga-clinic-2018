@@ -65,9 +65,9 @@ class Jupyter_plotter:
     self._depth_frame(figsize,dpi);
     
     if plot_dir is None:
-        plt.savefig(name+'_{0:0>4}.png'.format(int(time)))
+        plt.savefig(name+'_{0:0>10}.png'.format(int(time)))
     else:
-        plt.savefig(os.path.join(plot_dir, name+'_{0:0>4}.png'.format(int(time))))
+        plt.savefig(os.path.join(plot_dir, name+'_{0:0>10}.png'.format(int(time))))
     plt.close()
     
     return    
@@ -89,8 +89,14 @@ class Jupyter_plotter:
     from matplotlib import image, animation
     from matplotlib import pyplot as plt
 
+    plot_dir = self.plot_dir
+    name = self.name
     
-    img_files = sorted(glob.glob("channel1_*.png"))
+    if plot_dir is None:
+        expression = name+'_*.png'
+    else:
+        expression = os.path.join(plot_dir, name+'_*.png')
+    img_files = sorted(glob.glob(expression))
 
     figsize=(10,6)
 
