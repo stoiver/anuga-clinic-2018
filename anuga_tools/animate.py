@@ -141,6 +141,6 @@ class Jupyter_plotter:
               raise IOError('*** Cannot clobber existing directory %s' % plot_dir)
       else:
           os.system("mkdir %s" % plot_dir)
-      print("Figure files for each frame will be stored in ", plot_dir)
+      print "Figure files for each frame will be stored in " + plot_dir
 
 
