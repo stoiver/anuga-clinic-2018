@@ -213,7 +213,7 @@ class SWW_plotter:
 
     plt.colorbar()
     
-    return  pt1.Collections , pt2.Collections
+    return  pt1, pt2
     
   def save_depth_frame(self, frame=-1):
 
