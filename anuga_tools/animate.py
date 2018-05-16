@@ -156,8 +156,9 @@ class SWW_plotter:
   xmomentunm and ymomentum, and triangulation information.
   """
   
-  def __init__(self, swwfile = 'domain.sww'):
+  def __init__(self, swwfile = 'domain.sww', plot_dir = '_plot'):):
     
+    self.plot_dir = plot_dir
     
     import matplotlib.tri as tri
     from anuga import plot_utils
@@ -221,6 +222,7 @@ class SWW_plotter:
     dpi = 160
     name = self.name
     time = self.time[frame] 
+    plot_dir = self.plot_dir
 
     self._depth_frame(figsize,dpi,frame);
     
