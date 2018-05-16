@@ -150,7 +150,7 @@ class Domain_plotter:
   
       
       
-  class SWW_plotter:
+class SWW_plotter:
   """
   A class to wrap ANUGA swwfile centroid values for stage, height, elevation
   xmomentunm and ymomentum, and triangulation information.
