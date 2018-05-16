@@ -239,7 +239,6 @@ class SWW_plotter:
 
     
     name = self.name
-    time = self.time[frame]  
     
     figsize=(10,6)
 
