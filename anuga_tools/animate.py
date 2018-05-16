@@ -143,7 +143,14 @@ class Domain_plotter:
           os.system("mkdir %s" % plot_dir)
       print "Figure files for each frame will be stored in " + plot_dir
 
-class SWW_plotter:
+
+      
+      
+   
+  
+      
+      
+  class SWW_plotter:
   """
   A class to wrap ANUGA swwfile centroid values for stage, height, elevation
   xmomentunm and ymomentum, and triangulation information.
@@ -184,19 +191,21 @@ class SWW_plotter:
  
     name = self.name
     time = self.time[frame] 
+    depth = self.depth[frame,:]
+    elev  = self.elev
 
     fig = plt.figure(figsize=figsize, dpi=dpi)
 
     plt.title('Time {0:0>4}'.format(time))
     
-    self.triang.set_mask(self.depth>0.01)
+    self.triang.set_mask(depth>0.01)
     plt.tripcolor(self.triang, 
-              facecolors = self.elev,
+              facecolors = elev,
               cmap='Greys_r')
     
-    self.triang.set_mask(self.depth<0.01)
+    self.triang.set_mask(depth<0.01)
     plt.tripcolor(self.triang, 
-              facecolors = self.depth,
+              facecolors = depth,
               cmap='viridis')
 
     plt.colorbar()
