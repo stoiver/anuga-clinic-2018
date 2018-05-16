@@ -234,14 +234,14 @@ class SWW_plotter:
 
   def plot_depth_frame(self, frame=-1):
   
-    figsize=(10,6)
-    dpi = 160
+    figsize=(5,3)
+    dpi = 80
     
     self._depth_frame(figsize,dpi,frame)
     
     plt.show()
     
-    return pt
+    return
 
   
 
