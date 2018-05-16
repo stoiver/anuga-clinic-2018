@@ -255,7 +255,7 @@ class SWW_plotter:
     return self._make_quantity_animation(quantity='speed')
 
 
- def _speed_frame(self, figsize, dpi, frame):
+  def _speed_frame(self, figsize, dpi, frame):
  
     name = self.name
     time = self.time[frame] 
