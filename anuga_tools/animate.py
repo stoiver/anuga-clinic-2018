@@ -247,6 +247,73 @@ class SWW_plotter:
     return
 
   def make_depth_animation(self):
+    
+    return self._make_quantity_animation(quantity='depth')
+  
+  def make_speed_animation(self):
+    
+    return self._make_quantity_animation(quantity='speed')
+
+
+ def _speed_frame(self, figsize, dpi, frame):
+ 
+    name = self.name
+    time = self.time[frame] 
+    depth = self.depth[frame,:]
+    elev  = self.elev
+    speed = np.sqrt(self.xvel**2 + self.yvel**2)
+
+    ims = []
+    
+    fig = plt.figure(figsize=figsize, dpi=dpi)
+
+    plt.title('Time {0:0>4}'.format(time))
+    
+    self.triang.set_mask(depth>0.01)
+    plt.tripcolor(self.triang, 
+              facecolors = elev,
+              cmap='Greys_r')
+    
+    
+    self.triang.set_mask(depth<0.01)
+    plt.tripcolor(self.triang, 
+              facecolors = speed,
+              cmap='viridis')
+
+    plt.colorbar()
+    
+    return  
+    
+  def save_speed_frame(self, frame=-1):
+
+    figsize=(10,6)
+    dpi = 160
+    name = self.name
+    time = self.time[frame] 
+    plot_dir = self.plot_dir
+
+    self._depth_frame(figsize,dpi,frame);
+    
+    if plot_dir is None:
+        plt.savefig(name+'_speed_{0:0>10}.png'.format(int(time)))
+    else:
+        plt.savefig(os.path.join(plot_dir, name+'_speed_{0:0>10}.png'.format(int(time))))
+    plt.close()
+    
+    return    
+
+  def plot_speed_frame(self, frame=-1):
+  
+    figsize=(5,3)
+    dpi = 80
+    
+    self._speed_frame(figsize,dpi,frame)
+    
+    plt.show()
+    
+    return
+
+  def _make_quantity_animation(self, quantity='depth'):
     import numpy as np
     import glob
     from matplotlib import image, animation
@@ -256,9 +323,9 @@ class SWW_plotter:
     name = self.name
     
     if plot_dir is None:
-        expression = name+'_*.png'
+        expression = name+'_'+quantity+'_*.png'
     else:
-        expression = os.path.join(plot_dir, name+'_*.png')
+        expression = os.path.join(plot_dir, name+'_'+quantity+'_*.png')
     img_files = sorted(glob.glob(expression))
 
     figsize=(10,6)
@@ -283,7 +350,8 @@ class SWW_plotter:
     plt.close()
   
     return anim
-
+  
+ 
   def make_plot_dir(self, clobber=True):
     """
     Utility function to create a directory for storing a sequence of plot
