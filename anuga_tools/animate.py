@@ -156,9 +156,10 @@ class SWW_plotter:
   xmomentunm and ymomentum, and triangulation information.
   """
   
-  def __init__(self, swwfile = 'domain.sww', plot_dir = '_plot'):):
+  def __init__(self, swwfile = 'domain.sww', plot_dir = '_plot'):
     
     self.plot_dir = plot_dir
+    self.make_plot_dir()
     
     import matplotlib.tri as tri
     from anuga import plot_utils
@@ -244,6 +245,65 @@ class SWW_plotter:
     plt.show()
     
     return
+
+  def make_depth_animation(self):
+    import numpy as np
+    import glob
+    from matplotlib import image, animation
+    from matplotlib import pyplot as plt
+
+    plot_dir = self.plot_dir
+    name = self.name
+    
+    if plot_dir is None:
+        expression = name+'_*.png'
+    else:
+        expression = os.path.join(plot_dir, name+'_*.png')
+    img_files = sorted(glob.glob(expression))
+
+    figsize=(10,6)
+
+    fig = plt.figure(figsize=figsize, dpi=80)
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.axis('off')  # so there's not a second set of axes
+    im = plt.imshow(image.imread(img_files[0]))
+
+    def init():
+      im.set_data(image.imread(img_files[0]))
+      return im,
+
+    def animate(i):
+      image_i=image.imread(img_files[i])
+      im.set_data(image_i)
+      return im,
+
+    anim = animation.FuncAnimation(fig, animate, init_func=init,
+                            frames=len(img_files), interval=200, blit=True)
+
+    plt.close()
+  
+    return anim
+
+  def make_plot_dir(self, clobber=True):
+    """
+    Utility function to create a directory for storing a sequence of plot
+    files, or if the directory already exists, clear out any old plots.  
+    If clobber==False then it will abort instead of deleting existing files.
+    """
+
+    plot_dir = self.plot_dir
+    if plot_dir is None:
+      return
+    else:
+      import os
+      if os.path.isdir(plot_dir):
+          if clobber:
+              os.system("rm %s/*" % plot_dir)
+          else:
+              raise IOError('*** Cannot clobber existing directory %s' % plot_dir)
+      else:
+          os.system("mkdir %s" % plot_dir)
+      print "Figure files for each frame will be stored in " + plot_dir
 
   
 
