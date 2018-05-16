@@ -157,9 +157,9 @@ class SWW_plotter:
     self.p=plot_utils.get_output(swwfile)
     self.p2=plot_utils.get_centroids(p)
 
-    self.nodes_x = p.x
-    self.nodes_y = p.y
-    self.triangles = p.vols
+    self.nodes_x = self.p.x
+    self.nodes_y = self.p.y
+    self.triangles = self.p.vols
 
     self.triang = tri.Triangulation(self.nodes_x, self.nodes_y, self.triangles)
     
