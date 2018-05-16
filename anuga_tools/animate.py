@@ -199,18 +199,18 @@ class SWW_plotter:
     plt.title('Time {0:0>4}'.format(time))
     
     self.triang.set_mask(depth>0.01)
-    plt.tripcolor(self.triang, 
+    pt1 = plt.tripcolor(self.triang, 
               facecolors = elev,
               cmap='Greys_r')
     
     self.triang.set_mask(depth<0.01)
-    plt.tripcolor(self.triang, 
+    pt2 = plt.tripcolor(self.triang, 
               facecolors = depth,
               cmap='viridis')
 
     plt.colorbar()
     
-    return    
+    return  pt2,  
     
   def save_depth_frame(self, frame=-1):
 
@@ -234,11 +234,11 @@ class SWW_plotter:
     figsize=(5,3)
     dpi = 160
     
-    self._depth_frame(figsize,dpi,frame)
+    pt = self._depth_frame(figsize,dpi,frame)
     
     plt.show()
     
-    return
+    return pt,
 
   def make_depth_animation(self):
     import numpy as np
@@ -255,16 +255,16 @@ class SWW_plotter:
     ax = fig.add_axes([0, 0, 1, 1])
     ax.axis('off')  # so there's not a second set of axes
     
-    self.plot_depth_frame(0)
+    pt = self.plot_depth_frame(0)
     
 
     def init():
-      im = self.plot_depth_frame(0)
-      return im,
+      pt = self.plot_depth_frame(0)
+      return pt,
 
     def animate(i):
-      im = self.plot_depth_frame(i)
-      return im,
+      pt = self.plot_depth_frame(i)
+      return pt,
 
     anim = animation.FuncAnimation(fig, animate, init_func=init,
                             frames=len(self.time), interval=200, blit=True)
