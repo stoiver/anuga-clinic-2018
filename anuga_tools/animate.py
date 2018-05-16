@@ -185,6 +185,7 @@ class SWW_plotter:
     self.ymom  = p2.ymom
     self.xvel  = p2.xvel
     self.yvel  = p2.yvel
+    self.speed = np.sqrt(self.xvel**2 + self.yvel**2)
     
     self.time  = p2.time
     
@@ -255,7 +256,7 @@ class SWW_plotter:
     time = self.time[frame] 
     depth = self.depth[frame,:]
     elev  = self.elev
-    speed = np.sqrt(self.xvel**2 + self.yvel**2)
+    speed = self.speed[frame,:]
 
     ims = []
     
