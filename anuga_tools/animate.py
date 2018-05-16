@@ -154,12 +154,18 @@ class SWW_plotter:
     
     import matplotlib.tri as tri
     from anuga import plot_utils
-    self.p=plot_utils.get_output(swwfile)
-    self.p2=plot_utils.get_centroids(p)
+    p=plot_utils.get_output(swwfile)
+    p2=plot_utils.get_centroids(p)
+    
+    self.p = p
+    self.p2 = p2
+    
+    import os
+    self.name = os.path.splitext(p.filename)[0]
 
-    self.nodes_x = self.p.x
-    self.nodes_y = self.p.y
-    self.triangles = self.p.vols
+    self.nodes_x = p.x
+    self.nodes_y = p.y
+    self.triangles = p.vols
 
     self.triang = tri.Triangulation(self.nodes_x, self.nodes_y, self.triangles)
     
@@ -176,7 +182,7 @@ class SWW_plotter:
     
   def _depth_frame(self, figsize, dpi, frame):
  
-    name = self.p.filename
+    name = self.name
     time = self.time[frame] 
 
     fig = plt.figure(figsize=figsize, dpi=dpi)
@@ -201,7 +207,7 @@ class SWW_plotter:
 
     figsize=(10,6)
     dpi = 160
-    name = self.p.filename
+    name = self.name
     time = self.time[frame] 
 
     self._depth_frame(figsize,dpi,frame);
@@ -232,7 +238,7 @@ class SWW_plotter:
     from matplotlib import pyplot as plt
 
     
-    name = self.p.filename
+    name = self.name
     time = self.time[frame]  
     
     figsize=(10,6)
