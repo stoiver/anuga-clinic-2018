@@ -273,7 +273,7 @@ class SWW_plotter:
     self.triang.set_mask(depth<0.01)
     plt.tripcolor(self.triang, 
               facecolors = speed,
-              cmap='jet')
+              cmap='viridis')
 
     plt.colorbar()
     
