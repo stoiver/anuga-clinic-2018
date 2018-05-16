@@ -201,7 +201,7 @@ class SWW_plotter:
     
     fig = plt.figure(figsize=figsize, dpi=dpi)
 
-    plt.title('Time {0:0>4}'.format(time))
+    plt.title('Depth: Time {0:0>4}'.format(time))
     
     self.triang.set_mask(depth>0.01)
     plt.tripcolor(self.triang, 
@@ -262,7 +262,7 @@ class SWW_plotter:
     
     fig = plt.figure(figsize=figsize, dpi=dpi)
 
-    plt.title('Time {0:0>4}'.format(time))
+    plt.title('Speed: Time {0:0>4}'.format(time))
     
     self.triang.set_mask(depth>0.01)
     plt.tripcolor(self.triang, 
@@ -273,7 +273,7 @@ class SWW_plotter:
     self.triang.set_mask(depth<0.01)
     plt.tripcolor(self.triang, 
               facecolors = speed,
-              cmap='viridis')
+              cmap='jet')
 
     plt.colorbar()
     
@@ -287,7 +287,7 @@ class SWW_plotter:
     time = self.time[frame] 
     plot_dir = self.plot_dir
 
-    self._depth_frame(figsize,dpi,frame);
+    self._speed_frame(figsize,dpi,frame);
     
     if plot_dir is None:
         plt.savefig(name+'_speed_{0:0>10}.png'.format(int(time)))
