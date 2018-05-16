@@ -194,6 +194,8 @@ class SWW_plotter:
     depth = self.depth[frame,:]
     elev  = self.elev
 
+    ims = []
+    
     fig = plt.figure(figsize=figsize, dpi=dpi)
 
     plt.title('Time {0:0>4}'.format(time))
@@ -203,6 +205,7 @@ class SWW_plotter:
               facecolors = elev,
               cmap='Greys_r')
     
+    
     self.triang.set_mask(depth<0.01)
     pt2 = plt.tripcolor(self.triang, 
               facecolors = depth,
@@ -210,7 +213,7 @@ class SWW_plotter:
 
     plt.colorbar()
     
-    return  pt2,  
+    return  pt1.Collections , pt2.Collections
     
   def save_depth_frame(self, frame=-1):
 
@@ -238,7 +241,7 @@ class SWW_plotter:
     
     plt.show()
     
-    return pt,
+    return pt
 
   def make_depth_animation(self):
     import numpy as np
