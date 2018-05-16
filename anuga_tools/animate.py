@@ -1,6 +1,6 @@
 """
 A module to allow interactive plotting in a Jupyter notebook of quantities and mesh 
-associated with an ANUGA domain.
+associated with an ANUGA domain and SWW file.
 """
 
 import numpy as np
@@ -143,7 +143,7 @@ class Domain_plotter:
           os.system("mkdir %s" % plot_dir)
       print "Figure files for each frame will be stored in " + plot_dir
 
-class Sww_plotter:
+class SWW_plotter:
   """
   A class to wrap ANUGA swwfile centroid values for stage, height, elevation
   xmomentunm and ymomentum, and triangulation information.
