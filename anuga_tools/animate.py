@@ -228,9 +228,9 @@ class SWW_plotter:
     self._depth_frame(figsize,dpi,frame);
     
     if plot_dir is None:
-        plt.savefig(name+'_{0:0>10}.png'.format(int(time)))
+        plt.savefig(name+'_depth_{0:0>10}.png'.format(int(time)))
     else:
-        plt.savefig(os.path.join(plot_dir, name+'_{0:0>10}.png'.format(int(time))))
+        plt.savefig(os.path.join(plot_dir, name+'_depth_{0:0>10}.png'.format(int(time))))
     plt.close()
     
     return    
@@ -246,13 +246,7 @@ class SWW_plotter:
     
     return
 
-  def make_depth_animation(self):
-    
-    return self._make_quantity_animation(quantity='depth')
-  
-  def make_speed_animation(self):
-    
-    return self._make_quantity_animation(quantity='speed')
+
 
 
   def _speed_frame(self, figsize, dpi, frame):
@@ -313,6 +307,14 @@ class SWW_plotter:
     
     return
 
+  def make_depth_animation(self):
+    
+    return self._make_quantity_animation(quantity='depth')
+  
+  def make_speed_animation(self):
+    
+    return self._make_quantity_animation(quantity='speed')
+  
   def _make_quantity_animation(self, quantity='depth'):
     import numpy as np
     import glob
