@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-class Jupyter_plotter:
+class Domain_plotter:
   """
   A class to wrap ANUGA domain centroid values for stage, height, elevation
   xmomentunm and ymomentum, and triangulation information.
@@ -142,5 +142,123 @@ class Jupyter_plotter:
       else:
           os.system("mkdir %s" % plot_dir)
       print "Figure files for each frame will be stored in " + plot_dir
+
+class Sww_plotter:
+  """
+  A class to wrap ANUGA swwfile centroid values for stage, height, elevation
+  xmomentunm and ymomentum, and triangulation information.
+  """
+  
+  def __init__(self, swwfile = 'domain.sww'):
+    
+    
+    import matplotlib.tri as tri
+    from anuga import plot_utils
+    self.p=plot_utils.get_output(swwfile)
+    self.p2=plot_utils.get_centroids(p)
+
+    self.nodes_x = p.x
+    self.nodes_y = p.y
+    self.triangles = p.vols
+
+    self.triang = tri.Triangulation(self.nodes_x, self.nodes_y, self.triangles)
+    
+    self.elev  = p2.elev
+    self.depth = p2.height
+    self.stage = p2.stage
+    self.xmom  = p2.xmom
+    self.ymom  = p2.ymom
+    self.xvel  = p2.xvel
+    self.yvel  = p2.yvel
+    
+    self.time  = p2.time
+    
+    
+  def _depth_frame(self, figsize, dpi, frame):
+ 
+    name = self.p.filename
+    time = self.time[frame] 
+
+    fig = plt.figure(figsize=figsize, dpi=dpi)
+
+    plt.title('Time {0:0>4}'.format(time))
+    
+    self.triang.set_mask(self.depth>0.01)
+    plt.tripcolor(self.triang, 
+              facecolors = self.elev,
+              cmap='Greys_r')
+    
+    self.triang.set_mask(self.depth<0.01)
+    plt.tripcolor(self.triang, 
+              facecolors = self.depth,
+              cmap='viridis')
+
+    plt.colorbar()
+    
+    return    
+    
+  def save_depth_frame(self, frame=-1):
+
+    figsize=(10,6)
+    dpi = 160
+    name = self.p.filename
+    time = self.time[frame] 
+
+    self._depth_frame(figsize,dpi,frame);
+    
+    if plot_dir is None:
+        plt.savefig(name+'_{0:0>10}.png'.format(int(time)))
+    else:
+        plt.savefig(os.path.join(plot_dir, name+'_{0:0>10}.png'.format(int(time))))
+    plt.close()
+    
+    return    
+
+  def plot_depth_frame(self, frame=-1):
+  
+    figsize=(5,3)
+    dpi = 160
+    
+    self._depth_frame(figsize,dpi,frame)
+    
+    plt.show()
+    
+    return
+
+  def make_depth_animation(self):
+    import numpy as np
+    import glob
+    from matplotlib import image, animation
+    from matplotlib import pyplot as plt
+
+    
+    name = self.p.filename
+    time = self.time[frame]  
+    
+    figsize=(10,6)
+
+    fig = plt.figure(figsize=figsize, dpi=80)
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.axis('off')  # so there's not a second set of axes
+    
+    self.plot_depth_frame(0)
+    
+
+    def init():
+      im = self.plot_depth_frame(0)
+      return im,
+
+    def animate(i):
+      im = self.plot_depth_frame(i)
+      return im,
+
+    anim = animation.FuncAnimation(fig, animate, init_func=init,
+                            frames=len(self.time), interval=200, blit=True)
+
+    plt.close()
+  
+    return anim
+
+
 
 
