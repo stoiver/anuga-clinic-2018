@@ -16,9 +16,9 @@ The clinic is composed of 3 jupyter notebooks:
 
 ## Colaboratory
 
-These notebooks have been designed to run in the google `colaboratory` environment, which provides a jupyter notebook environment running on a virtual machine in the cloud. To use this environment you need a google account so that your copies of teh notebooks can be saved on google drive. 
+These notebooks have been designed to run in the google `colaboratory` environment, which provides a jupyter notebook environment running on a virtual machine in the cloud. To use this environment you need a google account so that your copies of the notebooks can be saved on google drive. 
 
-Once you have your google account, you can start interacting with the notebooks by openning up the notebook and then following the `View in Colaboratory` at the top of each notebook. This will start up a virtual environment associated with your google account where you can run the code in the notebook (and save any changes you might make).
+Once you have your google account, you can start interacting with the notebooks by opening up the notebook and then following the `View in Colaboratory` at the top of each notebook. This will start up a virtual environment associated with your google account where you can run the code in the notebook (and save any changes you might make).
 
 ## More Examples
 
