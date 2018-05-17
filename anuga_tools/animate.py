@@ -162,37 +162,52 @@ class SWW_plotter:
     self.make_plot_dir()
     
     import matplotlib.tri as tri
-    from anuga import plot_utils
-    p=plot_utils.get_output(swwfile)
-    p2=plot_utils.get_centroids(p)
-    
-    self.p = p
-    self.p2 = p2
-    
+    import numpy as np
+ 
     import os
     self.name = os.path.splitext(p.filename)[0]
 
-    self.nodes_x = p.x
-    self.nodes_y = p.y
-    self.triangles = p.vols
+    from anuga.file.netcdf import NetCDFFile
+    p = NetCDFFile(swwfile)
+    
 
-    self.triang = tri.Triangulation(self.nodes_x, self.nodes_y, self.triangles)
+    self.x = np.array(p.variables['x'])
+    self.y = np.array(p.variables['y'])
+    self.triangles = np.array(p.variables['volumes'])
+
+    vols0=self.triangles[:,0]
+    vols1=self.triangles[:,1]
+    vols2=self.triangles[:,2]
     
-    self.xc = p2.x
-    self.yc = p2.y
-    self.xllcorner = p2.xllcorner
-    self.yllcorner = p2.yllcorner
+    self.triang = tri.Triangulation(self.x, self.y, self.triangles)
     
-    self.elev  = p2.elev
-    self.depth = p2.height
-    self.stage = p2.stage
-    self.xmom  = p2.xmom
-    self.ymom  = p2.ymom
-    self.xvel  = p2.xvel
-    self.yvel  = p2.yvel
+    
+    self.xc=(self.x[vols0]+self.x[vols1]+self.x[vols2])/3.0
+    self.yc=(self.y[vols0]+self.y[vols1]+self.y[vols2])/3.0
+    
+    
+    self.xllcorner = p.xllcorner
+    self.yllcorner = p.yllcorner
+    
+    self.elev  = np.array(p.variables['elevation_c'])
+    self.stage = np.array(p.variables['stage_c'])
+    self.xmom  = np.array(p.variables['xmomentum_c'])
+    self.ymom  = np.array(p.variables['ymomentum_c'])
+    
+    self.depth = np.zeros_like(self.stage)
+    if(len(self.elev.shape)==2):
+      self.depth = self.stage - self.elev
+    else:
+      for i in range(height.shape[0]):
+        self.depth[i,:] = self.stage[i,:]-self.elev
+    
+    
+    self.xvel  = np.where(self.depth > min_depth, self.xmom / self.depth, 0.0)
+    self.yvel  = np.where(self.depth > min_depth, self.ymom / self.depth, 0.0)
+    
     self.speed = np.sqrt(self.xvel**2 + self.yvel**2)
     
-    self.time  = p2.time
+    self.time  = np.array(p.variables['time'])
     
     
   def _depth_frame(self, figsize, dpi, frame):
