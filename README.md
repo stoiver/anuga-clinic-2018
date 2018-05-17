@@ -22,4 +22,4 @@ Once you have your google account, you can start interacting with the notebooks 
 
 ## More Examples
 
-If you are interested in learning more about ANUGA, the github repository has [documentation](https://github.com/GeoscienceAustralia/anuga_core/tree/master/doc), [example code](https://github.com/GeoscienceAustralia/anuga_core/tree/master/examples) and over 30 [validation tests](https://github.com/GeoscienceAustralia/anuga_core/tree/master/validstion_tests).
+If you are interested in learning more about ANUGA, the github repository has [documentation](https://github.com/GeoscienceAustralia/anuga_core/tree/master/doc), [example code](https://github.com/GeoscienceAustralia/anuga_core/tree/master/examples) and over 30 [validation tests](https://github.com/GeoscienceAustralia/anuga_core/tree/master/validation_tests).
