@@ -3,10 +3,10 @@ Repository to contain the material for the 2018 CSDMS ANUGA Clinic
 
 At present the clinic is composed of 2 jupyter notebooks:
 
-* Notebook 1: Introduction to ANUGA
+* [Notebook 1: Introduction to ANUGA](notebooks/notebook1.ipynb)
   - Here we introduce the idea of creating a `domain` which contains the mesh and quantities needed to run the simulation, and encapsulates the methods for setting up the initial conditions, the boundary conditions and the method for evolving the solution. 
 
-* Notebook 2: Merewether Case Study
+* [Notebook 2: Merewether Case Study](notebooks/notebook2.ipynb)
 
 Plans for:
 
