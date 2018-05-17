@@ -215,7 +215,10 @@ class SWW_plotter:
     name = self.name
     time = self.time[frame] 
     depth = self.depth[frame,:]
-    elev  = self.elev
+    try:
+      elev  = self.elev[frame,:]
+    except:
+      elev  = self.elev
 
     ims = []
     
@@ -275,7 +278,10 @@ class SWW_plotter:
     name = self.name
     time = self.time[frame] 
     depth = self.depth[frame,:]
-    elev  = self.elev
+    try:
+      elev  = self.elev[frame,:]
+    except:
+      elev  = self.elev    
     speed = self.speed[frame,:]
 
     ims = []
