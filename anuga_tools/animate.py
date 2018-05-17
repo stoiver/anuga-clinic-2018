@@ -156,7 +156,7 @@ class SWW_plotter:
   xmomentunm and ymomentum, and triangulation information.
   """
   
-  def __init__(self, swwfile = 'domain.sww', plot_dir = '_plot'):
+  def __init__(self, swwfile = 'domain.sww', plot_dir = '_plot', minimum_allowed_depth=1.0e-03):
     
     self.plot_dir = plot_dir
     self.make_plot_dir()
@@ -202,8 +202,8 @@ class SWW_plotter:
         self.depth[i,:] = self.stage[i,:]-self.elev
     
     
-    self.xvel  = np.where(self.depth > min_depth, self.xmom / self.depth, 0.0)
-    self.yvel  = np.where(self.depth > min_depth, self.ymom / self.depth, 0.0)
+    self.xvel  = np.where(self.depth > minimum_allowed_depth, self.xmom / self.depth, 0.0)
+    self.yvel  = np.where(self.depth > minimum_allowed_depth, self.ymom / self.depth, 0.0)
     
     self.speed = np.sqrt(self.xvel**2 + self.yvel**2)
     
