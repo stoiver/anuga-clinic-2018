@@ -1,5 +1,7 @@
-# ANUGA Clinic 2018
-Repository to contain the material for the 2018 CSDMS ANUGA Clinic, The aim of the clinic is to present the basic ideas of producing an ANUGA domain, which entails creating an appropriate trangulated mesh, setting up intial conditions, and boundary conditions, operators such as flow inlets and then run (evolve) the simulation. Within the constraints of a jupyter notebook we will also see how to extract data from an `sww` file (the standard ANUGA output file) and visualise the output.  
+# ANUGA Clinic CSDMS 2018
+
+
+The aim of the clinic is to present the basic ideas of producing an ANUGA domain, which entails creating an appropriate trangulated mesh, setting up intial conditions, and boundary conditions, operators such as flow inlets and then run (evolve) the simulation. Within the constraints of a jupyter notebook we will also see how to extract data from an `sww` file (the standard ANUGA output file) and visualise the output.  
 
 The clinic is composed of 3 jupyter notebooks:
 
