@@ -178,6 +178,11 @@ class SWW_plotter:
 
     self.triang = tri.Triangulation(self.nodes_x, self.nodes_y, self.triangles)
     
+    self.xc = p2.x
+    self.yc = p2.y
+    self.xllcorner = p2.xllcorner
+    self.yllcorner = p2.yllcorner
+    
     self.elev  = p2.elev
     self.depth = p2.height
     self.stage = p2.stage
