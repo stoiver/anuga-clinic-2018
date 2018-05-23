@@ -410,6 +410,10 @@ class SWW_plotter:
     
     return self._make_quantity_animation(quantity='speed')
   
+  def make_stage_animation(self):
+    
+    return self._make_quantity_animation(quantity='stage')
+  
   def _make_quantity_animation(self, quantity='depth'):
     import numpy as np
     import glob
