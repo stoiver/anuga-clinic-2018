@@ -21,8 +21,17 @@ class Domain_plotter:
     import matplotlib.tri as tri
     self.nodes = domain.nodes
     self.triangles = domain.triangles
+    self.x = domain.nodes[:,0]
+    self.y = domain.nodes[:,1]
+    
+    self.xc = domain.centroid_coordinates[:,0]
+    self.yc = domain.centroid_coordinates[:,1]
 
-    self.triang = tri.Triangulation(self.nodes[:,0], self.nodes[:,1], self.triangles)
+    self.xllcorner = domain.geo_reference.xllcorner
+    self.yllcorner = domain.geo_reference.yllcorner
+    self.zone = domain.geo_reference.zone
+    
+    self.triang = tri.Triangulation(self.x, self.y, self.triangles)
     
     self.elev  = domain.quantities['elevation'].centroid_values
     self.depth = domain.quantities['height'].centroid_values
@@ -188,6 +197,7 @@ class SWW_plotter:
     
     self.xllcorner = p.xllcorner
     self.yllcorner = p.yllcorner
+    self.zone = p.zone
     
     self.elev  = np.array(p.variables['elevation_c'])
     self.stage = np.array(p.variables['stage_c'])
@@ -270,8 +280,66 @@ class SWW_plotter:
     
     return
 
+  def _stage_frame(self, figsize, dpi, frame):
+ 
+    name = self.name
+    time = self.time[frame] 
+    stage = self.stage[frame,:]
+    depth = self.depth[frame,:]
+    try:
+      elev  = self.elev[frame,:]
+    except:
+      elev  = self.elev
 
+    ims = []
+    
+    fig = plt.figure(figsize=figsize, dpi=dpi)
 
+    plt.title('Stage: Time {0:0>4}'.format(time))
+    
+    self.triang.set_mask(depth>0.01)
+    plt.tripcolor(self.triang, 
+              facecolors = elev,
+              cmap='Greys_r')
+    
+    
+    self.triang.set_mask(depth<0.01)
+    plt.tripcolor(self.triang, 
+              facecolors = stage,
+              cmap='viridis')
+
+    plt.colorbar()
+    
+    return  
+    
+  def save_stage_frame(self, frame=-1):
+
+    figsize=(10,6)
+    dpi = 160
+    name = self.name
+    time = self.time[frame] 
+    plot_dir = self.plot_dir
+
+    self._stage_frame(figsize,dpi,frame);
+    
+    if plot_dir is None:
+        plt.savefig(name+'_stage_{0:0>10}.png'.format(int(time)))
+    else:
+        plt.savefig(os.path.join(plot_dir, name+'_stage_{0:0>10}.png'.format(int(time))))
+    plt.close()
+    
+    return    
+
+  def plot_stage_frame(self, frame=-1):
+  
+    figsize=(5,3)
+    dpi = 80
+    
+    self._stage_frame(figsize,dpi,frame)
+    
+    plt.show()
+    
+    return
 
   def _speed_frame(self, figsize, dpi, frame):
  
