@@ -11,8 +11,8 @@ The clinic is composed of 3 jupyter notebooks:
 * [Notebook 2: Merewether Flood Case Study](notebooks/notebook2.ipynb)
   - Here we look at a case study of a flood in the community of Merewether.  We will add a flow using an `Inlet_operator` and extract flow details at various points by interagating the `sww` file which is produced from each ANUGA run. 
 
-* [Notebook 3: Create a simple erosion Operator](notebooks/notebook3.ipynb)
-  - Still in development
+* [Notebook 3: Setup a simple erosion Operator](notebooks/notebook3.ipynb)
+  - Setup a sanddune erosion operator.
 
 ## Colaboratory
 
