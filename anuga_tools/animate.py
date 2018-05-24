@@ -208,7 +208,7 @@ class SWW_plotter:
     if(len(self.elev.shape)==2):
       self.depth = self.stage - self.elev
     else:
-      for i in range(height.shape[0]):
+      for i in range(self.depth.shape[0]):
         self.depth[i,:] = self.stage[i,:]-self.elev
     
     
