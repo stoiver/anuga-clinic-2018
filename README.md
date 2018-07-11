@@ -22,9 +22,9 @@ Once you have your google account, you can start interacting with the notebooks 
 
 Here are direct links to the notebooks which open in colaboratory
 
-* [Notebook 1: Introduction to ANUGA](notebooks/notebook1.ipynb)
-* [Notebook 2: Merewether Flood Case Study](notebooks/notebook2.ipynb)
-* [Notebook 3: Setup a simple erosion Operator](notebooks/notebook3.ipynb)
+* [Notebook 1: Introduction to ANUGA](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook1.ipynb)
+* [Notebook 2: Merewether Flood Case Study](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook2.ipynb)
+* [Notebook 3: Setup a simple erosion Operator](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook3.ipynb)
 
 ## More Examples
 
