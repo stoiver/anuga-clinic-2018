@@ -20,6 +20,12 @@ These notebooks have been designed to run in the google `colaboratory` environme
 
 Once you have your google account, you can start interacting with the notebooks by opening up the notebook and then following the `View in Colaboratory` at the top of each notebook. This will start up a virtual environment associated with your google account where you can run the code in the notebook (and save any changes you might make).
 
+Here are direct links to the notebooks which open in colaboratory
+
+* [Notebook 1: Introduction to ANUGA](notebooks/notebook1.ipynb)
+* [Notebook 2: Merewether Flood Case Study](notebooks/notebook2.ipynb)
+* [Notebook 3: Setup a simple erosion Operator](notebooks/notebook3.ipynb)
+
 ## More Examples
 
 If you are interested in learning more about ANUGA, the github repository has [documentation](https://github.com/GeoscienceAustralia/anuga_core/tree/master/doc), [example code](https://github.com/GeoscienceAustralia/anuga_core/tree/master/examples) and over 30 [validation tests](https://github.com/GeoscienceAustralia/anuga_core/tree/master/validation_tests).
