@@ -18,13 +18,16 @@ The clinic is composed of 3 jupyter notebooks:
 
 These notebooks have been designed to run in the google `colaboratory` environment, which provides a jupyter notebook environment running on a virtual machine in the cloud. To use this environment you need a google account so that your copies of the notebooks can be saved on google drive. 
 
-Once you have your google account, you can start interacting with the notebooks by opening up the notebook and then following the `View in Colaboratory` at the top of each notebook. This will start up a virtual environment associated with your google account where you can run the code in the notebook (and save any changes you might make).
+Once you have your google account, you can start interacting with the notebooks. 
 
-Here are direct links to the notebooks which open in colaboratory
+Here are direct links to the notebooks which open directly in colaboratory. This will start up a virtual environment associated with your google account where you can run the code in the notebook (and save any changes you might make).
 
 * [Notebook 1: Introduction to ANUGA](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook1.ipynb)
 * [Notebook 2: Merewether Flood Case Study](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook2.ipynb)
 * [Notebook 3: Setup a simple erosion Operator](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook3.ipynb)
+
+Alternatively open up the notebooks on github and then following the `View in Colaboratory` at the top of each notebook. 
+
 
 ## More Examples
 
