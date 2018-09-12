@@ -3,7 +3,7 @@
 
 The aim of the clinic is to present the basic ideas of producing an ANUGA domain, which entails creating an appropriate triangulated mesh, setting up intial conditions, and boundary conditions, operators such as flow inlets and then running (evolve) the simulation. Within the constraints of a jupyter notebook we will also see how to extract data from an `sww` file (the standard ANUGA output file) and visualise the output.  
 
-The clinic is composed of 3 jupyter notebooks:
+The clinic is composed of 4 jupyter notebooks:
 
 * [Notebook 1: Introduction to ANUGA](notebooks/notebook1.ipynb)
   - Here we introduce the idea of creating a `domain` which contains the mesh and quantities needed to run the simulation, and encapsulates the methods for setting up the initial conditions, the boundary conditions and the method for evolving the solution. 
