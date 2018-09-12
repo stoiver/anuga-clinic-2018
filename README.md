@@ -13,6 +13,9 @@ The clinic is composed of 3 jupyter notebooks:
 
 * [Notebook 3: Setup a simple erosion Operator](notebooks/notebook3.ipynb)
   - Setup a sanddune erosion operator.
+  
+ * [Notebook 4: Setting up a Pumping Operator separated by a River Wall](notebooks/notebook4.ipynb)
+   - Here we go through the process of creating an operator (fractional step operator) which implements a simple pump, and separate the inlet from the outlet with a River wall.
 
 ## Colaboratory
 
@@ -25,6 +28,7 @@ Here are direct links to the notebooks which open directly in colaboratory. This
 * [Notebook 1: Introduction to ANUGA](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook1.ipynb)
 * [Notebook 2: Merewether Flood Case Study](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook2.ipynb)
 * [Notebook 3: Setup a simple erosion Operator](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook3.ipynb)
+* [Notebook 4: Setup a pump operator](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook4.ipynb)
 
 Alternatively open up the notebooks on github and then following the `View in Colaboratory` at the top of each notebook. 
 
