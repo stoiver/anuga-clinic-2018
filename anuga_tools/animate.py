@@ -13,9 +13,10 @@ class Domain_plotter:
   xmomentunm and ymomentum, and triangulation information.
   """
   
-  def __init__(self, domain, plot_dir = '_plot'):
+  def __init__(self, domain, plot_dir = '_plot', min_depth = 0.01):
     
     self.plot_dir = plot_dir
+    self.min_depth = min_depth
     self.make_plot_dir()
     
     import matplotlib.tri as tri
@@ -49,12 +50,12 @@ class Domain_plotter:
 
     plt.title('Time {0:0>4}'.format(time))
     
-    self.triang.set_mask(self.depth>0.01)
+    self.triang.set_mask(self.depth>self.min_depth)
     plt.tripcolor(self.triang, 
               facecolors = self.elev,
               cmap='Greys_r')
     
-    self.triang.set_mask(self.depth<0.01)
+    self.triang.set_mask(self.depth<self.min_depth)
     plt.tripcolor(self.triang, 
               facecolors = self.depth,
               cmap='viridis')
