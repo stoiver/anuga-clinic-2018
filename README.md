@@ -21,7 +21,9 @@ Here are links to the notebooks which open directly in colaboratory. This will s
 * [Notebook 4: Setup a pump operator](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook4.ipynb)
   - Here we go through the process of creating an operator (fractional step operator) which implements a simple pump, and separate the inlet from the outlet with a River wall.
 
-
+* [Notebook 5: Okushiri Island Monai Valley Tsunami Runup](https://colab.research.google.com/github/stoiver/anuga-clinic-2018/blob/master/notebooks/notebook5.ipynb)
+  - This notebook implements a standard tsunami runup benchmark. 
+  
 ## Notebooks on Github
 
 Alternatively download the notebooks from  github and open using your own `jupyter` server (though you will have to install `anuga` first). 
@@ -33,6 +35,8 @@ Alternatively download the notebooks from  github and open using your own `jupyt
 * [Notebook 3: Setup a simple erosion Operator](notebooks/notebook3.ipynb)
   
 * [Notebook 4: Setting up a Pumping Operator separated by a River Wall](notebooks/notebook4.ipynb)
+
+* [Notebook 5: Okushiri Island Monai Valley Tsunami Runup](notebooks/notebook5.ipynb)
    
 ## More Examples
 
