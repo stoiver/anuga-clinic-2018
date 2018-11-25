@@ -166,9 +166,13 @@ class SWW_plotter:
   xmomentunm and ymomentum, and triangulation information.
   """
   
-  def __init__(self, swwfile = 'domain.sww', plot_dir = '_plot', minimum_allowed_depth=1.0e-03):
+  def __init__(self, swwfile = 'domain.sww', 
+               plot_dir = '_plot', 
+               minimum_allowed_depth=1.0e-03,
+               min_depth = 0.01):
     
     self.plot_dir = plot_dir
+    self.min_depth = min_depth
     self.make_plot_dir()
     
     import matplotlib.tri as tri
@@ -237,13 +241,13 @@ class SWW_plotter:
 
     plt.title('Depth: Time {0:0>4}'.format(time))
     
-    self.triang.set_mask(depth>0.01)
+    self.triang.set_mask(depth>self.min_depth)
     plt.tripcolor(self.triang, 
               facecolors = elev,
               cmap='Greys_r')
     
     
-    self.triang.set_mask(depth<0.01)
+    self.triang.set_mask(depth<self.min_depth)
     plt.tripcolor(self.triang, 
               facecolors = depth,
               cmap='viridis')
