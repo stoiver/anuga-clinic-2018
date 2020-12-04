@@ -12,7 +12,7 @@ echo "(3) Install netcdf4 via apt-get"
 apt-get -q -y install python-netcdf4  > /dev/null 2>&1 
 
 echo "(4) Download anuga_core github repository"
-git clone --quiet https://github.com/GeoscienceAustralia/anuga_core.git  > /dev/null 2>&1 
+git clone --quiet https://github.com/anuga-community/anuga_core.git  > /dev/null 2>&1 
 
 echo "(5) Install anuga"
 
