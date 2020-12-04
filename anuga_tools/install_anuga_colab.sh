@@ -14,8 +14,11 @@ pip -q install pyproj  > /dev/null 2>&1
 echo "(2) Install gdal via apt-get"
 apt-get -q -y install python-gdal gdal-bin  > /dev/null 2>&1 
 
-echo "(3) Install netcdf4 via apt-get"
+echo "(3a) Install netcdf4 via apt-get"
 apt-get -q -y install python-netcdf4  > /dev/null 2>&1 
+
+echo "(3b) Install netcdf4 via pip"
+pip -q install netCDF4 > /dev/null 2>&1 
 
 echo "(4) Download anuga_core github repository"
 git clone --quiet https://github.com/anuga-community/anuga_core.git  > /dev/null 2>&1 
