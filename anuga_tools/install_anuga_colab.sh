@@ -2,8 +2,14 @@
 
 cd /content
 
-echo "(1) Install nose via pip"
+echo "(1a) Install nose via pip"
 pip -q install nose  > /dev/null 2>&1 
+
+echo "(1b) Install via gitpython pip"
+pip -q install gitpython  > /dev/null 2>&1 
+
+echo "(1c) Install via pyproj pip"
+pip -q install pyproj  > /dev/null 2>&1 
 
 echo "(2) Install gdal via apt-get"
 apt-get -q -y install python-gdal gdal-bin  > /dev/null 2>&1 
