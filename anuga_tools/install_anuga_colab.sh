@@ -2,7 +2,7 @@
 
 cd /content
 
-echo "Install Dependencies"
+echo "(1) Install Dependencies"
 echo "   Install nose via pip"
 pip -q install nose  > /dev/null 2>&1 
 
