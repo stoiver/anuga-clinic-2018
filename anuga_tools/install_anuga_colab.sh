@@ -24,6 +24,12 @@ pip -q install netCDF4 > /dev/null 2>&1
 echo "   Install triangle via pip"
 pip -q install triangle > /dev/null 2>&1 
 
+echo "   Install pytz via pip"
+pip -q install pytz > /dev/null 2>&1 
+
+echo "   Install pymetis via pip"
+pip -q install pymetis > /dev/null 2>&1 
+
 echo "(2) Download anuga_core github repository"
 git clone --quiet https://github.com/anuga-community/anuga_core.git  > /dev/null 2>&1 
 
