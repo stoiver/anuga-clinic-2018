@@ -21,11 +21,11 @@ apt-get -q -y install python-netcdf4  > /dev/null 2>&1
 echo "   Install netcdf4 via pip"
 pip -q install netCDF4 > /dev/null 2>&1
 
-echo "   Install triangle via pip"
-pip -q install triangle > /dev/null 2>&1 
+echo "   Install meshpy via pip"
+pip -q install meshpy > /dev/null 2>&1 
 
-echo "   Install pytz via pip"
-pip -q install pytz > /dev/null 2>&1 
+echo "   Install zoneinfo via pip"
+pip -q install backports.zoneinfo > /dev/null 2>&1 
 
 echo "   Install pymetis via pip"
 pip -q install pymetis > /dev/null 2>&1 
