@@ -27,6 +27,9 @@ pip -q install meshpy > /dev/null 2>&1
 echo "   Install zoneinfo via pip"
 pip -q install backports.zoneinfo > /dev/null 2>&1 
 
+echo "   Install dill via pip"
+pip -q install dill > /dev/null 2>&1 
+
 echo "   Install pymetis via pip"
 pip -q install pymetis > /dev/null 2>&1 
 
