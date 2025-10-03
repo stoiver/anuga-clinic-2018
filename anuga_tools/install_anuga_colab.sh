@@ -45,7 +45,7 @@ git clone --quiet https://github.com/anuga-community/anuga_core.git  > /dev/null
 echo "(3) Install anuga"
 
 cd anuga_core
-python -m pip install -q --no-build-isolation . > /dev/null 2>&1 
+pip install --no-build-isolation .  
 cd ../
 
 echo "(4) Ready to go"
