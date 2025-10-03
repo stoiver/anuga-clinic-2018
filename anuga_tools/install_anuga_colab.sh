@@ -33,13 +33,19 @@ pip -q install dill > /dev/null 2>&1
 echo "   Install pymetis via pip"
 pip -q install pymetis > /dev/null 2>&1 
 
+echo "   Install meson-python via pip"
+pip -q install meson-python > /dev/null 2>&1 
+
+echo "   Install ninja via pip"
+pip -q install ninja > /dev/null 2>&1 
+
 echo "(2) Download anuga_core github repository"
 git clone --quiet https://github.com/anuga-community/anuga_core.git  > /dev/null 2>&1 
 
 echo "(3) Install anuga"
 
 cd anuga_core
-python setup.py --quiet install  > /dev/null 2>&1 
+python -m pip install -q --no-build-isolation . > /dev/null 2>&1 
 cd ../
 
 echo "(4) Ready to go"
